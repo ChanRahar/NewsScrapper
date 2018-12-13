@@ -1,51 +1,29 @@
 {{> navbar}}
 <div class="container">
     {{#each article}}
-    <div class="card text-center" data-toggle="modal" data-target=".bd-example-modal-lg">
+    <div class="card text-center">
         <div class="card-header">
-            {{article}}
+            <h2>{{title}}</h2>
         </div>
         <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <button class='delete btn btn-danger'>x</button>
+         
+                <button data-id="{{_id}}" class="btn btn-secondary dropdown-toggle comment-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true">
+                    Comment
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Comment</label>
+                        <textarea class="form-control" id="text{{_id}}" rows="3"></textarea>
+                        <button data-id="{{_id}}" type="button" class="btn btn-primary save-comment">Save Comment</button>
+                    </div>
+                </div>
+           
+            {{!-- <button data-id="{{_id}}" class='btn btn-primary comment-modal' data-toggle="modal" data-target=".bd-example-modal-lg">Comment</button> --}}
+            <a href="{{link}}" class="btn btn-secondary" role="button">Read News</a>
         </div>
     </div>
+    <br>
     {{/each}}
 </div>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="container">
-                {{#each note}}
-                <div class="card">
-                    <div class="card-body row">
-                        <div class="col-sm-11">
-                            {{dbArticle}}
-                        </div>
-                        <div class="col-sm-1">
-                            <button class='delete btn btn-danger'>x</button>
-                        </div>
-                    </div>
-                </div>
-                {{/each}}
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

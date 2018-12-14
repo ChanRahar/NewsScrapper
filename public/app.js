@@ -3,6 +3,7 @@ $(document).ready(function () {
     fetch("/scrape", { method: "GET" }).then(() => window.location.replace("/scrape"));
   });
 
+  
   // save articles to the db
   $('.save-button').on("click", function () {
     console.log("clicked")
@@ -23,7 +24,7 @@ $(document).ready(function () {
     }
     console.log(data);
     $.post("/articles/" + thisId, data, function () {
-      window.location.href = "#";
+      window.location.reload();
     });
   })
 
@@ -32,7 +33,7 @@ $(document).ready(function () {
     console.log(thisId)
     $.get("/articles/" + thisId, function (data) {
       console.log(data);
-      $("#" + thisId).val(data.note.body)
+      $("#text" + thisId).val(data.note.body)
     });
   })
 
